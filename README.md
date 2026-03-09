@@ -12,16 +12,16 @@ A Python project that visualizes and compares pathfinding algorithms on grid-bas
 - Includes multiple sample mazes with different difficulty levels
 
 ## Algorithms
-- **DFS (Depth-First Search)** – explores one path deeply before backtracking
-- **BFS (Breadth-First Search)** – explores level by level and guarantees the shortest path in an unweighted grid
-- **A\*** – uses a heuristic (Manhattan distance) to guide the search toward the goal
+- **DFS (Depth-First Search)** = explores one path deeply before backtracking
+- **BFS (Breadth-First Search)** = explores level by level and guarantees the shortest path in an unweighted grid
+- **A\*** = uses a heuristic (Manhattan distance) to guide the search toward the goal
 
 ## Project Structure
 maze-pathfinding-visualizer/
-- main.py – visualization and animation
-- solver.py – DFS, BFS, and A* implementations
-- input.py – maze configuration (maze, start, end)
-- maze_samples.txt – sample mazes for testing
+- main.py = visualization and animation
+- solver.py = DFS, BFS, and A* implementations
+- input.py = maze configuration (maze, start, end)
+- maze_samples.txt = sample mazes for testing
 
 ## Requirements
 Python
