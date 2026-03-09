@@ -49,6 +49,7 @@ PURPLE = (150, 80, 200)
 GRAY = (200, 200, 200)
 BLUE = (100, 180, 255)
 GREEN = (80, 200, 120)
+YELLOW = (255, 220, 120)
 
 # Clock controls animation speed
 clock = pygame.time.Clock()
@@ -175,27 +176,29 @@ def draw_info():
 # Draw comparison summary
 def draw_summary():
     summary_y = ROWS * CELL_SIZE + 80
-    
+    current_algorithm = algorithms[current_algorithm_index]
+
     # Summary title
     summary_title = small_font.render("Comparison Summary", True, BLACK)
     screen.blit(summary_title, (10, summary_y))
-    
-    # DFS summary
-    dfs_text = small_font.render(
-        f"DFS - Nodes: {results['dfs']['nodes_explored']} Path length: {results['dfs']['path_length']}", True, BLACK
-    )
-    
-    # BFS summary
-    bfs_text = small_font.render(
-        f"BFS  - Nodes: {results['bfs']['nodes_explored']}  Path length: {results['bfs']['path_length']}", True, BLACK
-    )
-    screen.blit(bfs_text, (10, summary_y + 55))
 
-    # A* summary
-    astar_text = small_font.render(
-        f"A*   - Nodes: {results['astar']['nodes_explored']}  Path length: {results['astar']['path_length']}", True, BLACK
-    )
-    screen.blit(astar_text, (10, summary_y + 80))
+    # Summary rows
+    summary_rows = [
+        ("dfs", f"DFS  - Nodes: {results['dfs']['nodes_explored']}  Path: {results['dfs']['path_length']}"),
+        ("bfs", f"BFS  - Nodes: {results['bfs']['nodes_explored']}  Path: {results['bfs']['path_length']}"),
+        ("astar", f"A*   - Nodes: {results['astar']['nodes_explored']}  Path: {results['astar']['path_length']}")
+    ]
+
+    for index, (name, text) in enumerate(summary_rows):
+        y = summary_y + 30 + (index * 25)
+
+        # Highlight the algorithm currently being animated
+        if name == current_algorithm:
+            highlight_rect = pygame.Rect(8, y - 2, 300, 22)
+            pygame.draw.rect(screen, YELLOW, highlight_rect, border_radius=6)
+
+        row_text = small_font.render(text, True, BLACK)
+        screen.blit(row_text, (10, y))
 
 # Move to next algorithm
 def next_algorithm():
