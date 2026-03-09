@@ -1,22 +1,31 @@
 import pygame
 import sys
 from solver import dfs, bfs, astar
+from input import maze, start, end
 
-# 0 = Walkable path
-# 1 = Wall
-maze = [
-    [0, 1, 0, 0, 0, 0, 0],
-    [0, 1, 0, 1, 1, 1, 0],
-    [0, 0, 0, 1, 0, 0, 0],
-    [1, 1, 0, 1, 0, 1, 0],
-    [0, 0, 0, 0, 0, 1, 0],
-    [0, 1, 1, 1, 0, 1, 0],
-    [0, 0, 0, 1, 0, 0, 0],
-]
+def validate_input(maze, start, end):
+    rows = len(maze)
+    cols = len(maze[0])
 
-# Start and goal positions (row, col)
-start = (0, 0)
-end = (6, 6)
+    # Check maze is not empty
+    if rows == 0 or cols == 0:
+        raise ValueError("Maze cannot be empty.")
+
+    # Check all rows have same length
+    for row in maze:
+        if len(row) != cols:
+            raise ValueError("All rows in the maze must have the same length.")
+
+    # Check start and end are inside the maze
+    for position, name in [(start, "start"), (end, "end")]:
+        r, c = position
+        if not (0 <= r < rows and 0 <= c < cols):
+            raise ValueError(f"{name.capitalize()} position is out of bounds.")
+
+        if maze[r][c] != 0:
+            raise ValueError(f"{name.capitalize()} position must be on a walkable cell.")
+        
+validate_input(maze, start, end)
 
 # Initialized pygame
 pygame.init()
@@ -88,22 +97,17 @@ def get_all_results():
     
     return results
 
-# Sotre comparison results
+# Store comparison results
 results = get_all_results()
 
-# Run selected solver
 def run_solver():
     global visit_order, path, step_index, show_path
-    
+
     algorithm = algorithms[current_algorithm_index]
-    
-    if algorithm == "dfs":
-        visit_order, path = dfs(maze, start, end)
-    elif algorithm == "bfs":
-        visit_order, path = bfs(maze, start, end)
-    else:
-        visit_order, path = astar(maze, start, end)
-        
+
+    visit_order = results[algorithm]["visit_order"]
+    path = results[algorithm]["path"]
+
     # Reset animation
     step_index = 0
     show_path = False
@@ -156,7 +160,7 @@ def draw_start_end():
     # Goal node
     pygame.draw.rect(screen, PURPLE, (ec * CELL_SIZE, er * CELL_SIZE, CELL_SIZE, CELL_SIZE))
 
-# Draw current algorightm info
+# Draw current algorithm info
 def draw_info():
     algorithm = algorithms[current_algorithm_index]
     
@@ -186,7 +190,7 @@ def draw_summary():
     summary_rows = [
         ("dfs", f"DFS  - Nodes: {results['dfs']['nodes_explored']}  Path: {results['dfs']['path_length']}"),
         ("bfs", f"BFS  - Nodes: {results['bfs']['nodes_explored']}  Path: {results['bfs']['path_length']}"),
-        ("astar", f"A*   - Nodes: {results['astar']['nodes_explored']}  Path: {results['astar']['path_length']}")
+        ("astar", f"A*  - Nodes: {results['astar']['nodes_explored']}  Path: {results['astar']['path_length']}")
     ]
 
     for index, (name, text) in enumerate(summary_rows):
