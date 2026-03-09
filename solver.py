@@ -31,14 +31,14 @@ def get_neighbors(position, maze):
     return neighbors
 
 # Reconstruct final path from end back to start
-def reconstuct_path(parent, start, end):
+def reconstruct_path(parent, start, end):
     # Special case
     if start == end:
         return [start]
     
     # If end is not in parent, that means no path was found
     if end not in parent:
-        return[]
+        return []
     
     path = []
     current = end
@@ -69,7 +69,7 @@ def dfs(maze, start, end):
         
         # Stop if goal is reached
         if current == end:
-            path = reconstuct_path(parent, start, end)
+            path = reconstruct_path(parent, start, end)
             return visit_order, path
         
         # Explore neighbors
@@ -96,7 +96,7 @@ def bfs(maze, start, end):
         
         # Stop if goal is reached
         if current == end:
-            path = reconstuct_path(parent, start, end)
+            path = reconstruct_path(parent, start, end)
             return visit_order, path
         
         # Explore neighbors
@@ -137,7 +137,7 @@ def astar (maze, start, end):
         
         # Stop if goal is reached
         if current == end:
-            path = reconstuct_path(parent, start, end)
+            path = reconstruct_path(parent, start, end)
             return visit_order, path
         
         # Explore neighbors
