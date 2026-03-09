@@ -38,7 +38,7 @@ python main.py
 1 = wall
 
 Example:
-
+```
 maze = [
 [0,0,1,0],
 [0,0,1,0],
@@ -48,6 +48,6 @@ maze = [
 
 start = (0,0)  
 end = (3,3)
-
+```
 ## Purpose
 This project demonstrates basic graph traversal and heuristic search while providing a simple visual comparison between DFS, BFS, and A*.
