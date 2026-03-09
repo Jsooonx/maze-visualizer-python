@@ -24,7 +24,7 @@ maze-pathfinding-visualizer/
 - maze_samples.txt – sample mazes for testing
 
 ## Requirements
-Python 3  
+Python
 pygame
 
 Install pygame:
