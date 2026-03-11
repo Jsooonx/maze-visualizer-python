@@ -18,7 +18,7 @@ A Python project that visualizes and compares pathfinding algorithms on grid-bas
 
 ## Project Structure
 pathfinding-algorithm-visualizer/
-- main.py = visualization and animation
+- maze.py = visualization and animation
 - solver.py = DFS, BFS, and A* implementations
 - input.py = maze configuration (maze, start, end)
 - maze_samples.txt = sample mazes for testing
