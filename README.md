@@ -53,5 +53,6 @@ end = (3,3)
 ## Output
 <img src="assets/pathfindingdemo.gif" width="700">
 
-## Purpose
-This project demonstrates basic graph traversal and heuristic search while providing a simple visual comparison between DFS, BFS, and A*.
+## Key Insight
+This project compares how DFS, BFS, and A* behave on the same maze.
+DFS may find a path quickly but not always the shortest one, BFS guarantees the shortest path in an unweighted grid, and A* improves efficiency by guiding the search with a Manhattan-distance heuristic.
