@@ -58,9 +58,11 @@ end = (3,3)
 ## Comparison Insight
 This project compares how DFS, BFS, and A* behave on the same maze:
 - DFS may find a path quickly, but it does not guarantee the shortest path.
-- BFS guarantees the shortest path in an unweighted grid, though it may explore more nodes
-- A* improves efficiency by guiding the search with a Manhattan-distance heuristic <br>
+- BFS guarantees the shortest path in an unweighted grid, though it may explore more nodes.
+- A* improves efficiency by guiding the search with a Manhattan-distance heuristic.
+```
 Example:
 - DFS: Nodes explored = 69, Path length = 49
 - BFS: Nodes explored = 58, Path length = 33
 - A*: Nodes explored = 40, Path length = 33
+```
