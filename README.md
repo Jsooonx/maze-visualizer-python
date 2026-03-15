@@ -33,7 +33,7 @@ pip install pygame
 ```
 ## Run Instructions
 ```
-python main.py
+python maze.py
 ```
 ## Maze Format
 0 = walkable path  
