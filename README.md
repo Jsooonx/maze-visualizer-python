@@ -28,11 +28,13 @@ Python
 pygame
 
 Install pygame:
+```
 pip install pygame
-
-## Run
+```
+## Run Instructions
+```
 python main.py
-
+```
 ## Maze Format
 0 = walkable path  
 1 = wall
@@ -53,6 +55,12 @@ end = (3,3)
 ## Output
 <img src="assets/pathfindingdemo.gif" width="700">
 
-## Key Insight
-This project compares how DFS, BFS, and A* behave on the same maze.
-DFS may find a path quickly but not always the shortest one, BFS guarantees the shortest path in an unweighted grid, and A* improves efficiency by guiding the search with a Manhattan-distance heuristic.
+## Comparison Insight
+This project compares how DFS, BFS, and A* behave on the same maze:
+- DFS may find a path quickly, but it does not guarantee the shortest path.
+- BFS guarantees the shortest path in an unweighted grid, though it may explore more nodes
+- A* improves efficiency by guiding the search with a Manhattan-distance heuristic
+Example:
+- DFS: Nodes explored = 69, Path length = 49
+- BFS: Nodes explored = 58, Path length = 33
+- A*: Nodes explored = 40, Path length = 33
