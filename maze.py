@@ -2,6 +2,21 @@ import pygame
 import sys
 from solver import dfs, bfs, astar
 from input import maze, start, end
+from config import (
+    CELL_SIZE,
+    INFO_HEIGHT,
+    FPS,
+    PAUSE_FRAMES,
+    WHITE,
+    BLACK,
+    RED,
+    PURPLE,
+    GRAY,
+    BLUE,
+    GREEN,
+    YELLOW,
+    ALGORITHMS,
+)
 
 def validate_input(maze, start, end):
     rows = len(maze)
@@ -50,15 +65,6 @@ pygame.display.set_caption("Pathfinding Algorithm Visualizer")
 # Fonts
 font = pygame.font.SysFont(None, 32)
 small_font = pygame.font.SysFont(None, 24)
-
-WHITE = (255, 255, 255)
-BLACK = (30, 30, 30)
-RED = (220, 50, 50)
-PURPLE = (150, 80, 200)
-GRAY = (200, 200, 200)
-BLUE = (100, 180, 255)
-GREEN = (80, 200, 120)
-YELLOW = (255, 220, 120)
 
 # Clock controls animation speed
 clock = pygame.time.Clock()
