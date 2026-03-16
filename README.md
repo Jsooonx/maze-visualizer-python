@@ -21,6 +21,7 @@ pathfinding-algorithm-visualizer/
 - maze.py = visualization and animation
 - solver.py = DFS, BFS, and A* implementations
 - input.py = maze configuration (maze, start, end)
+- config.py = visual and application settings (cell size, colors, FPS, pause duration, algorithm list)
 - maze_samples.txt = sample mazes for testing
 
 ## Requirements
